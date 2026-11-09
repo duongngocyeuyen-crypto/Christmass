@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas English Review</title>
+<style>
+:root{--red:#b52b3a;--green:#176b50;--gold:#f2bd52;--ink:#263238;--muted:#66736f;--cream:#fffaf1;--line:#eadfce}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+header{background:linear-gradient(120deg,#124d3b,#1d7655);color:white;padding:28px 18px 24px;text-align:center;position:relative;overflow:hidden}
+header:before,header:after{content:"✦  ❄  ✦  ❄  ✦";position:absolute;color:#ffffff35;font-size:25px;letter-spacing:12px;top:12px}
+header:before{left:-10px}header:after{right:-10px}
+h1{font-size:clamp(28px,5vw,44px);margin:6px 0;font-family:Georgia,serif}header p{margin:4px 0;color:#e8fff4}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:-18px;position:relative}
+.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center;box-shadow:0 5px 18px #47331b0d}
+.stat b{display:block;color:var(--green);font-size:22px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 16px}
+nav button,.btn{border:0;border-radius:999px;padding:10px 16px;background:#e9eee8;color:var(--green);font-weight:700;cursor:pointer}
+nav button.active,.btn.primary{background:var(--red);color:white}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px #47331b0a}
+.panel.active{display:block}h2{font-family:Georgia,serif;color:var(--green);margin-top:0}
+h3{color:var(--red);margin-bottom:8px}.sub{color:var(--muted);margin-top:-8px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+input,select{border:1px solid var(--line);border-radius:10px;padding:11px;font-size:15px;background:#fff;min-width:180px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.word{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fffdf9}
+.word .en{font-weight:800;color:var(--green);font-size:17px}.ipa{color:var(--muted);font-size:13px}.meaning{margin-top:4px}
+.tag{display:inline-block;font-size:11px;background:#f8e9df;color:#8c3b30;padding:3px 8px;border-radius:20px;margin-top:8px}
+.flash-wrap{max-width:540px;margin:12px auto;text-align:center}
+.flash{min-height:220px;border:2px dashed #d8c6a6;border-radius:18px;background:#fffaf0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px;cursor:pointer}
+.flash .big{font-size:30px;font-weight:800;color:var(--green)}.flash .hint{color:var(--muted);margin-top:10px}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.question{border-bottom:1px solid var(--line);padding:14px 0}.question:last-child{border:0}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:9px}
+.option{border:1px solid var(--line);padding:10px;border-radius:10px;cursor:pointer;background:#fff;text-align:left}
+.option.selected{border-color:var(--green);background:#edf7f1}.option.correct{border-color:#248553;background:#e9f7ee}.option.wrong{border-color:#c34444;background:#fff0ef}
+.feedback{font-weight:700;margin-top:7px}.score{font-size:22px;color:var(--green);font-weight:800;margin:15px 0}
+.prompt{background:#f4f8f3;border-left:4px solid var(--green);padding:15px;border-radius:10px;font-size:18px}
+.speech{background:#fffaf0;border:1px solid var(--line);border-radius:13px;padding:16px;margin:12px 0;white-space:pre-line}
+.small{font-size:13px;color:var(--muted)}.pill{display:inline-block;background:#edf4ee;color:var(--green);padding:4px 9px;border-radius:20px;font-size:12px;font-weight:700}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:13px}
+@media(max-width:600px){.wrap{padding:12px}.panel{padding:15px}.stats{gap:6px}.stat{padding:10px 5px}.stat b{font-size:18px}nav button{padding:9px 12px}}
+</style>
+</head>
+<body>
+<header>
+  <div style="font-size:34px">🎄 🎅🏻 🦌</div>
+  <h1>CHRISTMAS</h1>
+  <p>English Review Website · Ôn tập tiếng Anh lớp 5–6</p>
+  <p>Vocabulary • Grammar • Speaking • Presentation • Quiz</p>
+</header>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b id="wordCount">36</b><span>Từ vựng</span></div>
+    <div class="stat"><b>8+</b><span>Mẫu câu</span></div>
+    <div class="stat"><b id="progress">0%</b><span>Hoàn thành quiz</span></div>
+  </div>
+  <nav>
+    <button class="active" data-tab="vocab">📚 Từ vựng</button>
+    <button data-tab="cards">🃏 Flashcards</button>
+    <button data-tab="structures">💬 Mẫu câu</button>
+    <button data-tab="speaking">🎤 Speaking</button>
+    <button data-tab="quiz">✏️ Quiz</button>
+    <button data-tab="presentation">🌟 Bài nói</button>
+  </nav>
+
+  <section class="panel active" id="vocab">
+    <h2>📚 Christmas Vocabulary</h2>
+    <p class="sub">Tìm kiếm từ vựng, xem phiên âm và nghĩa tiếng Việt.</p>
+    <div class="toolbar">
+      <input id="search" placeholder="Tìm từ tiếng Anh hoặc tiếng Việt...">
+      <select id="category"><option value="all">Tất cả chủ đề</option><option>Decorations</option><option>Characters</option><option>Food & Gifts</option><option>Activities</option><option>Weather & Others</option></select>
+    </div>
+    <div class="grid" id="wordGrid"></div>
+  </section>
+
+  <section class="panel" id="cards">
+    <h2>🃏 Flashcards – Lật thẻ ghi nhớ</h2>
+    <p class="sub">Đọc từ tiếng Anh, thử nhớ nghĩa rồi nhấn vào thẻ để kiểm tra.</p>
+    <div class="flash-wrap">
+      <div class="flash" id="flashCard" role="button" tabindex="0" aria-label="Lật flashcard">
+        <div class="pill" id="cardCount">Card 1</div>
+        <div class="big" id="cardWord">Christmas tree</div>
+        <div class="ipa" id="cardIpa">/ˈkrɪsməs triː/</div>
+        <div class="hint" id="cardMeaning">Nhấn vào thẻ để xem nghĩa</div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="prevCard">← Trước</button>
+        <button class="btn primary" id="flipCard">Hiện nghĩa</button>
+        <button class="btn" id="nextCard">Tiếp →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="structures">
+    <h2>💬 Sentence Structures – Mẫu câu</h2>
+    <p class="sub">Học sinh luyện đọc câu hỏi và trả lời thành câu hoàn chỉnh.</p>
+    <div id="structureList"></div>
+  </section>
+
+  <section class="panel" id="speaking">
+    <h2>🎤 Speaking Practice – Câu hỏi tương tác</h2>
+    <p class="sub">Chọn câu hỏi bất kỳ. Học sinh trả lời miệng bằng câu đầy đủ.</p>
+    <div class="prompt" id="speakingPrompt">Do you like Christmas? Why?</div>
+    <div class="controls"><button class="btn primary" id="newPrompt">Câu hỏi tiếp theo ↻</button></div>
+    <h3>Gợi ý mở rộng câu trả lời</h3>
+    <div class="grid">
+      <div class="word"><b>Because...</b><br><span class="small">I can spend time with my family.</span></div>
+      <div class="word"><b>Also,...</b><br><span class="small">I enjoy decorating the Christmas tree.</span></div>
+      <div class="word"><b>Usually,...</b><br><span class="small">I exchange presents with my friends.</span></div>
+    </div>
+    <h3>Pair work – Hội thoại theo cặp</h3>
+    <div class="speech"><b>Student A:</b> Do you like Christmas?<br><b>Student B:</b> Yes, I do. I love Christmas!<br><b>Student A:</b> What do you usually do at Christmas?<br><b>Student B:</b> I decorate the Christmas tree and exchange presents with my family.<br><b>Student A:</b> What do you want for Christmas?<br><b>Student B:</b> I want a new bicycle. What about you?<br><b>Student A:</b> I would like a teddy bear.<br><b>Student B:</b> That sounds great! Merry Christmas!</div>
+  </section>
+
+  <section class="panel" id="quiz">
+    <h2>✏️ Christmas Quiz</h2>
+    <p class="sub">Chọn đáp án đúng. Nhấn “Nộp bài” để xem kết quả và giải thích.</p>
+    <div id="quizArea"></div>
+    <div class="controls"><button class="btn primary" id="submitQuiz">Nộp bài</button><button class="btn" id="resetQuiz">Làm lại</button></div>
+    <div id="quizResult" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="presentation">
+    <h2>🌟 Christmas Presentation – Bài nói mẫu</h2>
+    <p class="sub">Chọn bài nói theo trình độ của học sinh.</p>
+    <div class="toolbar"><select id="level"><option value="basic">Level 1 – Basic (Lớp 5)</option><option value="intermediate">Level 2 – Intermediate (Lớp 5–6)</option><option value="advanced">Level 3 – Advanced (Lớp 6)</option></select></div>
+    <div class="speech" id="speechText"></div>
+    <p class="small">Thử thách: Thay đổi ít nhất 3 chi tiết để bài nói trở thành bài nói của chính em.</p>
+  </section>
+</div>
+<footer>🎄 Merry Christmas! Keep learning and have fun! 🎄</footer>
+
+<script>
+const words=[
+["Christmas tree","/ˈkrɪsməs triː/","Cây thông Noel","Decorations"],
+["Ornament","/ˈɔːnəmənt/","Đồ trang trí","Decorations"],
+["Star","/stɑːr/","Ngôi sao","Decorations"],
+["Fairy lights","/ˈfeəri laɪts/","Đèn trang trí","Decorations"],
+["Wreath","/riːθ/","Vòng nguyệt quế","Decorations"],
+["Stocking","/ˈstɒkɪŋ/","Chiếc tất Giáng sinh","Decorations"],
+["Bell","/bel/","Cái chuông","Decorations"],
+["Candle","/ˈkændl/","Nến","Decorations"],
+["Santa Claus","/ˈsæntə klɔːz/","Ông già Noel","Characters"],
+["Reindeer","/ˈreɪndɪə(r)/","Tuần lộc","Characters"],
+["Snowman","/ˈsnəʊmæn/","Người tuyết","Characters"],
+["Elf","/elf/","Chú lùn Giáng sinh","Characters"],
+["Sleigh","/sleɪ/","Xe trượt tuyết","Characters"],
+["Gingerbread cookies","/ˈdʒɪndʒəbred ˈkʊkiz/","Bánh quy gừng","Food & Gifts"],
+["Gingerbread man","/ˈdʒɪndʒəbred mæn/","Bánh gừng hình người","Food & Gifts"],
+["Gingerbread house","/ˈdʒɪndʒəbred haʊs/","Ngôi nhà bánh gừng","Food & Gifts"],
+["Candy cane","/ˈkændi keɪn/","Kẹo gậy","Food & Gifts"],
+["Christmas cake","/ˈkrɪsməs keɪk/","Bánh Giáng sinh","Food & Gifts"],
+["Present / Gift","/ˈpreznt/ /ɡɪft/","Món quà","Food & Gifts"],
+["Hot chocolate","/ˌhɒt ˈtʃɒklət/","Sô-cô-la nóng","Food & Gifts"],
+["Decorate the Christmas tree","","Trang trí cây thông","Activities"],
+["Wrap presents","","Gói quà","Activities"],
+["Exchange presents","","Trao đổi quà","Activities"],
+["Sing Christmas carols","","Hát nhạc Giáng sinh","Activities"],
+["Send Christmas cards","","Gửi thiệp Giáng sinh","Activities"],
+["Go shopping","","Đi mua sắm","Activities"],
+["Hang up stockings","","Treo tất Giáng sinh","Activities"],
+["Make gingerbread cookies","","Làm bánh quy gừng","Activities"],
+["Visit friends and family","","Thăm bạn bè và gia đình","Activities"],
+["Have a Christmas party","","Tổ chức tiệc Giáng sinh","Activities"],
+["Take photos","","Chụp ảnh","Activities"],
+["Snow","/snəʊ/","Tuyết","Weather & Others"],
+["Snowflake","/ˈsnəʊfleɪk/","Bông tuyết","Weather & Others"],
+["Chimney","/ˈtʃɪmni/","Ống khói","Weather & Others"],
+["North Pole","/ˌnɔːθ ˈpəʊl/","Bắc Cực","Weather & Others"],
+["Christmas Eve","/ˌkrɪsməs ˈiːv/","Đêm Giáng sinh","Weather & Others"]
+];
+document.getElementById("wordCount").textContent=words.length;
+function renderWords(){let q=document.getElementById("search").value.toLowerCase(),c=document.getElementById("category").value;
+let filtered=words.filter(w=>(c==="all"||w[3]===c)&&w.slice(0,3).join(" ").toLowerCase().includes(q));
+document.getElementById("wordGrid").innerHTML=filtered.map(w=>`<div class="word"><div class="en">${w[0]}</div><div class="ipa">${w[1]||" "}</div><div class="meaning">${w[2]}</div><span class="tag">${w[3]}</span></div>`).join("")||"<p>Không tìm thấy từ phù hợp.</p>"}
+document.getElementById("search").addEventListener("input",renderWords);document.getElementById("category").addEventListener("change",renderWords);renderWords();
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.tab).classList.add("active")}));
+let ci=0,flipped=false;
+function showCard(){let w=words[ci];document.getElementById("cardCount").textContent=`Card ${ci+1} / ${words.length}`;document.getElementById("cardWord").textContent=w[0];document.getElementById("cardIpa").textContent=w[1];document.getElementById("cardMeaning").textContent=flipped?w[2]:"Nhấn vào thẻ để xem nghĩa";document.getElementById("flipCard").textContent=flipped?"Ẩn nghĩa":"Hiện nghĩa"}
+function flip(){flipped=!flipped;showCard()}document.getElementById("flashCard").onclick=flip;document.getElementById("flashCard").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip()}};document.getElementById("flipCard").onclick=flip;
+document.getElementById("prevCard").onclick=()=>{ci=(ci-1+words.length)%words.length;flipped=false;showCard()};document.getElementById("nextCard").onclick=()=>{ci=(ci+1)%words.length;flipped=false;showCard()};showCard();
+const structures=[
+["When is Christmas?","Christmas is on December 25th.","Giáng sinh vào ngày nào?"],
+["What do you do at Christmas?","I decorate the Christmas tree and exchange presents.","Bạn làm gì vào dịp Giáng sinh?"],
+["Do you like Christmas? Why?","Yes, I do. I like it because it is fun and exciting.","Bạn có thích Giáng sinh không? Vì sao?"],
+["What do you want for Christmas?","I want a new school bag.","Bạn muốn gì vào dịp Giáng sinh?"],
+["What would you like to get for Christmas?","I would like to get a bicycle.","Bạn muốn nhận được gì?"],
+["Who do you celebrate Christmas with?","I celebrate Christmas with my family and friends.","Bạn đón Giáng sinh cùng ai?"],
+["What's the weather like at Christmas?","It's cold and sometimes snowy.","Thời tiết dịp Giáng sinh thế nào?"],
+["What do you eat at Christmas?","I eat gingerbread cookies, cake and candy canes.","Bạn ăn gì vào dịp Giáng sinh?"],
+["What pulls Santa's sleigh?","Reindeer pull Santa's sleigh.","Con gì kéo xe trượt tuyết của ông già Noel?"],
+["How do you decorate your Christmas tree?","I decorate it with colorful lights, stars and ornaments.","Bạn trang trí cây thông thế nào?"]
+];
+document.getElementById("structureList").innerHTML=structures.map((s,i)=>`<div class="question"><span class="pill">Question ${i+1}</span><h3>${s[0]}</h3><b>Answer:</b> ${s[1]}<div class="small">${s[2]}</div></div>`).join("");
+const prompts=["Do you like Christmas? Why?","When is Christmas celebrated?","What is your favorite Christmas decoration?","What is your favorite Christmas food?","What do you want for Christmas?","Who would you like to celebrate Christmas with?","What do you usually do on Christmas Eve?","How do people prepare for Christmas?","What does Santa Claus travel in?","What pulls Santa's sleigh?","What makes Christmas special to you?","If you could give someone a Christmas present, what would it be?"];
+let pi=0;document.getElementById("newPrompt").onclick=()=>{pi=(pi+1)%prompts.length;document.getElementById("speakingPrompt").textContent=prompts[pi]};
+const quiz=[
+{q:"When is Christmas?",o:["December 25th","January 1st","October 31st"],a:0,e:"Christmas is celebrated on December 25th."},
+{q:"What is 'sleigh' in Vietnamese?",o:["Tuần lộc","Xe trượt tuyết","Ống khói"],a:1,e:"Sleigh means xe trượt tuyết."},
+{q:"What pulls Santa's sleigh?",o:["Horses only","Penguins","Reindeer"],a:2,e:"Reindeer pull Santa's sleigh."},
+{q:"What are gingerbread cookies?",o:["Bánh quy gừng","Kẹo gậy","Bánh kem"],a:0,e:"Gingerbread cookies are bánh quy gừng."},
+{q:"Which phrase means 'trao đổi quà'?",o:["Wrap presents","Exchange presents","Send cards"],a:1,e:"Exchange presents means trao đổi quà."},
+{q:"What does Santa Claus bring?",o:["Homework","Presents","Snowflakes"],a:1,e:"Santa Claus brings presents to children."},
+{q:"Choose the correct sentence.",o:["I likes Christmas.","I liking Christmas.","I like Christmas."],a:2,e:"Use 'I like' with the subject I."},
+{q:"What do people hang up?",o:["Stockings","Chimneys","Reindeer"],a:0,e:"People hang up Christmas stockings."},
+{q:"What is 'vòng nguyệt quế' in English?",o:["Wreath","Bell","Candle"],a:0,e:"Wreath means vòng nguyệt quế."},
+{q:"Complete: I celebrate Christmas ___ my family.",o:["on","with","at"],a:1,e:"We say 'celebrate Christmas with my family'."}
+];
+function renderQuiz(){document.getElementById("quizArea").innerHTML=quiz.map((q,i)=>`<div class="question" data-q="${i}"><b>${i+1}. ${q.q}</b><div class="options">${q.o.map((o,j)=>`<button class="option" data-a="${j}">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}</div><div class="feedback" id="fb${i}"></div></div>`).join("");document.querySelectorAll("#quizArea .option").forEach(btn=>btn.onclick=()=>{let parent=btn.closest(".question");parent.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));btn.classList.add("selected");parent.dataset.answer=btn.dataset.a;document.getElementById("quizResult").innerHTML=""})}
+renderQuiz();
+document.getElementById("submitQuiz").onclick=()=>{let score=0,answered=0;quiz.forEach((q,i)=>{let el=document.querySelector(`[data-q="${i}"]`),ans=el.dataset.answer;if(ans!==undefined){answered++;if(+ans===q.a)score++}el.querySelectorAll(".option").forEach((b,j)=>{b.classList.remove("correct","wrong");if(j===q.a)b.classList.add("correct");else if(ans!==undefined&&j===+ans)b.classList.add("wrong")});document.getElementById("fb"+i).textContent=(ans===undefined?"Chưa trả lời. ":"")+(ans!==undefined&&+ans===q.a?"✓ Chính xác! ":"") + q.e;});document.getElementById("quizResult").innerHTML=`<div class="score">Kết quả: ${score}/${quiz.length} câu đúng · Đã trả lời ${answered}/${quiz.length} câu</div>`;document.getElementById("progress").textContent=Math.round(score/quiz.length*100)+"%"};
+document.getElementById("resetQuiz").onclick=()=>{renderQuiz();document.getElementById("quizResult").innerHTML="";document.getElementById("progress").textContent="0%"};
+const speeches={
+basic:`Hello everyone!\\n\\nToday, I want to talk about Christmas.\\n\\nChristmas is on December 25th. It is a special holiday. People decorate Christmas trees and their houses. Santa Claus brings presents to children. I like gingerbread cookies and candy canes. I usually celebrate Christmas with my family. I love Christmas because it is fun and exciting.\\n\\nThank you for listening! Merry Christmas!`,
+intermediate:`Hello everyone!\\n\\nToday, I'm going to talk about my favorite holiday, Christmas.\\n\\nChristmas is celebrated on December 25th every year. It is a wonderful time for family and friends. Before Christmas, people decorate their houses with Christmas trees, colorful lights and beautiful ornaments.\\n\\nOn Christmas Eve, I usually spend time with my family. We listen to Christmas songs, eat delicious food and exchange presents. My favorite Christmas food is gingerbread cookies because they are sweet and delicious. I also love Santa Claus and his reindeer.\\n\\nChristmas is my favorite holiday because it brings happiness, love and joy to everyone.\\n\\nThank you for listening! Merry Christmas!`,
+advanced:`Good morning, everyone!\\n\\nToday, I would like to share some thoughts about Christmas.\\n\\nChristmas is one of the most popular holidays in the world. It is celebrated on December 25th every year. For me, Christmas is more than just a holiday. It is a special time when people come together and share love and happiness.\\n\\nBefore Christmas, people decorate their homes with Christmas trees, colorful lights, stars and ornaments. Some people also make gingerbread cookies and prepare special meals. On Christmas Eve, families often have dinner together, exchange gifts and sing Christmas carols. Children are always excited to receive presents from Santa Claus.\\n\\nMy favorite thing about Christmas is spending quality time with my family. I also enjoy the beautiful decorations and the warm atmosphere. I believe Christmas teaches us to be kind, generous and thankful.\\n\\nThat's all about Christmas. Thank you for listening! Merry Christmas and Happy New Year!`
+};
+function showSpeech(){document.getElementById("speechText").textContent=speeches[document.getElementById("level").value].replaceAll("\\n","\n")}document.getElementById("level").onchange=showSpeech;showSpeech();
+</script>
+</body>
+</html>
